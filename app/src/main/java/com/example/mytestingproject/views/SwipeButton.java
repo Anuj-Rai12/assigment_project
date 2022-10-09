@@ -1,5 +1,6 @@
 package com.example.mytestingproject.views;
 
+import static android.graphics.Color.rgb;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -7,19 +8,18 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.core.content.ContextCompat;
-
 import com.example.mytestingproject.R;
 
 public class SwipeButton extends RelativeLayout {
@@ -31,7 +31,7 @@ public class SwipeButton extends RelativeLayout {
 
     private Drawable disabledDrawable;
     private Drawable enabledDrawable;
-
+    private SlideButtonListener listener;
     public SwipeButton(Context context) {
         super(context);
 
@@ -75,19 +75,21 @@ public class SwipeButton extends RelativeLayout {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
 
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-        centerText.setText("Swipe Mark Complete"); //add any text you need
-        centerText.setTextColor(Color.YELLOW);
+        centerText.setText("Swipe Mark Completed"); //add any text you need
+        centerText.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+        centerText.setTextColor(rgb(241, 176, 71));
+        centerText.setTypeface(null, Typeface.BOLD);
         centerText.setPadding(35, 35, 35, 35);
         background.addView(centerText, layoutParams);
 
         final ImageView swipeButton = new ImageView(context);
         this.slidingButton = swipeButton;
 
-        disabledDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_check_circle_24);
-        enabledDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_arrow_start);
+        disabledDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_arrow_start);
+        enabledDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_check_circle_24);
 
         slidingButton.setImageDrawable(disabledDrawable);
-        slidingButton.setPadding(40, 40, 40, 40);
+        slidingButton.setPadding(40, 35, 40, 30);
 
         LayoutParams layoutParamsButton = new LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -143,6 +145,7 @@ public class SwipeButton extends RelativeLayout {
                 case MotionEvent.ACTION_DOWN:
                     return true;
                 case MotionEvent.ACTION_MOVE:
+                    Log.i("SWIPE", "getButtonTouchListener: move");
                     if (initialX == 0) {
                         initialX = slidingButton.getX();
                     }
@@ -152,17 +155,18 @@ public class SwipeButton extends RelativeLayout {
                         centerText.setAlpha(1 - 1.3f * (slidingButton.getX() + slidingButton.getWidth()) / getWidth());
                     }
 
-                    if  (event.getX() + slidingButton.getWidth() / 2 > getWidth() &&
+                    if (event.getX() + slidingButton.getWidth() / 2 > getWidth() &&
                             slidingButton.getX() + slidingButton.getWidth() / 2 < getWidth()) {
                         slidingButton.setX(getWidth() - slidingButton.getWidth());
                     }
 
-                    if  (event.getX() < slidingButton.getWidth() / 2 &&
+                    if (event.getX() < slidingButton.getWidth() / 2 &&
                             slidingButton.getX() > 0) {
                         slidingButton.setX(0);
                     }
                     return true;
                 case MotionEvent.ACTION_UP:
+                    Log.i("SWIPE", "getButtonTouchListener: down");
                     if (active) {
                         collapseButton();
                     } else {
@@ -170,6 +174,7 @@ public class SwipeButton extends RelativeLayout {
 
                         if (slidingButton.getX() + slidingButton.getWidth() > getWidth() * 0.85) {
                             expandButton();
+                            handleSlide();
                         } else {
                             moveButtonBack();
                         }
@@ -185,12 +190,9 @@ public class SwipeButton extends RelativeLayout {
     private void expandButton() {
         final ValueAnimator positionAnimator =
                 ValueAnimator.ofFloat(slidingButton.getX(), 0);
-        positionAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float x = (Float) positionAnimator.getAnimatedValue();
-                slidingButton.setX(x);
-            }
+        positionAnimator.addUpdateListener(animation -> {
+            float x = (Float) positionAnimator.getAnimatedValue();
+            slidingButton.setX(x);
         });
 
 
@@ -198,13 +200,10 @@ public class SwipeButton extends RelativeLayout {
                 slidingButton.getWidth(),
                 getWidth());
 
-        widthAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                ViewGroup.LayoutParams params = slidingButton.getLayoutParams();
-                params.width = (Integer) widthAnimator.getAnimatedValue();
-                slidingButton.setLayoutParams(params);
-            }
+        widthAnimator.addUpdateListener(animation -> {
+            ViewGroup.LayoutParams params = slidingButton.getLayoutParams();
+            params.width = (Integer) widthAnimator.getAnimatedValue();
+            slidingButton.setLayoutParams(params);
         });
 
 
@@ -228,13 +227,10 @@ public class SwipeButton extends RelativeLayout {
                 slidingButton.getWidth(),
                 initialButtonWidth);
 
-        widthAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                ViewGroup.LayoutParams params =  slidingButton.getLayoutParams();
-                params.width = (Integer) widthAnimator.getAnimatedValue();
-                slidingButton.setLayoutParams(params);
-            }
+        widthAnimator.addUpdateListener(animation -> {
+            ViewGroup.LayoutParams params = slidingButton.getLayoutParams();
+            params.width = (Integer) widthAnimator.getAnimatedValue();
+            slidingButton.setLayoutParams(params);
         });
 
         widthAnimator.addListener(new AnimatorListenerAdapter() {
@@ -260,12 +256,9 @@ public class SwipeButton extends RelativeLayout {
         final ValueAnimator positionAnimator =
                 ValueAnimator.ofFloat(slidingButton.getX(), 0);
         positionAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        positionAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float x = (Float) positionAnimator.getAnimatedValue();
-                slidingButton.setX(x);
-            }
+        positionAnimator.addUpdateListener(animation -> {
+            float x = (Float) positionAnimator.getAnimatedValue();
+            slidingButton.setX(x);
         });
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(
@@ -277,4 +270,14 @@ public class SwipeButton extends RelativeLayout {
         animatorSet.playTogether(objectAnimator, positionAnimator);
         animatorSet.start();
     }
+
+    private void handleSlide() {
+        listener.handleSlide();
+    }
+
+
+    public void setSlideButtonListener(SlideButtonListener listener) {
+        this.listener = listener;
+    }
 }
+
