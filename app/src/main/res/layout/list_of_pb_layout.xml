@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ff8080">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pb_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/circle_shape"
+        android:backgroundTint="@color/white"
+        android:progress="30"
+        app:indicatorColor="#1e96f3"
+        app:indicatorSize="130dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showDelay="2000"
+        app:trackColor="#ebe6e2"
+        app:trackCornerRadius="20dp"
+        app:trackThickness="22dp" />
+
+
+    <TextView
+        android:id="@+id/per_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100%"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/pb_layout"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintLeft_toLeftOf="@id/pb_layout"
+        app:layout_constraintRight_toRightOf="@id/pb_layout"
+        app:layout_constraintTop_toTopOf="@id/pb_layout"
+        app:layout_constraintVertical_bias=".5" />
+
+
+    <TextView
+        android:id="@+id/total_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rec_shape"
+        android:backgroundTint="@color/white"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="15dp"
+        android:text="7/10"
+        android:textColor="#1e96f3"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/pb_layout"
+        app:layout_constraintHorizontal_bias=".9"
+        app:layout_constraintLeft_toRightOf="@id/pb_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pb_layout" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/white"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="8dp"
+        android:text="Check Activity"
+        android:textAllCaps="false"
+        android:textColor="#ff8080"
+        android:textSize="15sp"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/ic_round_check_24"
+        app:iconSize="20dp"
+        app:iconTint="#ff8080"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pb_layout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
