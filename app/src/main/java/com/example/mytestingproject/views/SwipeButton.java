@@ -101,41 +101,6 @@ public class SwipeButton extends RelativeLayout {
         swipeButton.setImageDrawable(disabledDrawable);
         addView(swipeButton, layoutParamsButton);
         setOnTouchListener(getButtonTouchListener());
-       /* RelativeLayout background = this;
-
-        LayoutParams layoutParamsView = new LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        layoutParamsView.addRule(RelativeLayout.CENTER_IN_PARENT,   RelativeLayout.TRUE);
-
-        background.setBackground(ContextCompat.getDrawable(context, R.drawable.shape_rounded));
-        addView(background, layoutParamsView);
-        final TextView centerText = new TextView(context);
-        this.centerText = centerText;
-        centerText.setGravity(Gravity.CENTER);
-
-        LayoutParams layoutParams = new LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-        centerText.setText("SWIPE"); //add any text you need
-        centerText.setTextColor(Color.WHITE);
-        background.addView(centerText, layoutParams);
-        final ImageView swipeButton = new ImageView(context);
-        this.slidingButton = swipeButton;
-
-        LayoutParams layoutParamsButton = new LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        layoutParamsButton.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-        layoutParamsButton.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-        swipeButton.setBackground(ContextCompat.getDrawable(context, R.drawable.shape_button));
-        swipeButton.setImageDrawable(disabledDrawable);
-        addView(swipeButton, layoutParamsButton);
-        setOnTouchListener(getButtonTouchListener());*/
     }
 
     @SuppressLint("ClickableViewAccessibility")
