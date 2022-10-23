@@ -2,14 +2,28 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+        jcenter()
         mavenCentral()
+        maven { url 'http://maven.zohodl.com/'
+            allowInsecureProtocol = true
+        }
+        maven { url 'https://downloads.zohocdn.com/wmslibrary'
+            allowInsecureProtocol = true
+        }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        jcenter()
         mavenCentral()
+        maven { url 'http://maven.zohodl.com/'
+            allowInsecureProtocol = true
+        }
+        maven { url 'https://downloads.zohocdn.com/wmslibrary'
+            allowInsecureProtocol = true
+        }
     }
 }
 rootProject.name = "MyTestingProject"
