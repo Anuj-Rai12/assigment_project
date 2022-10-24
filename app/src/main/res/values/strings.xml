@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MyTestingProject</string>
+
+
+
+    <string name="DeskPortal.Dashboard.Heading">My Anuj Zoho</string>
+    <string name="DeskPortal.Dashboard.addticket.title">Create New Ticket Anuj</string>
+    <string name="DeskPortal.Dashboard.livechat.title">Anuj Waiting..</string>
+
+
+
+
 </resources>
