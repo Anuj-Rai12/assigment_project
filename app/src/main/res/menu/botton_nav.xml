@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/chat_support"
+        android:icon="@drawable/ic_chat_bubble"
+        android:title="Chat Support"
+        android:iconTint="@color/white"
+        />
+
+    <item
+        android:id="@+id/knowledge_base"
+        android:icon="@drawable/ic_info"
+        android:title="KnowLedge Base"
+        android:iconTint="@color/white"/>
+
+    <item
+        android:id="@+id/support_ticket_id"
+        android:icon="@drawable/ic_support_agent"
+        android:iconTint="@color/white"
+        android:title="Submit ticket" />
+
+
+
+    <item
+        android:id="@+id/ticket_view"
+        android:icon="@drawable/ic_airplane_ticket"
+        android:iconTint="@color/white"
+        android:title="Ticket" />
+
+    <item
+        android:id="@+id/live_chat"
+        android:icon="@drawable/ic_live"
+        android:iconTint="@color/white"
+        android:title="Live Chat" />
+
+
+
+</menu>
