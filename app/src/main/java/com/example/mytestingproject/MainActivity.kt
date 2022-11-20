@@ -9,39 +9,43 @@ import com.zoho.desk.asap.api.ZDPortalException
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
+    companion object {
+        const val userToken = "ae3c5747e56e5854a007802f2f085e0247bbc1396d23b5fa76e7d7e1c2141930"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val flag=MainApplication.apiProvider?.isUserSignedIn
+        val flag = MainApplication.apiProvider?.isUserSignedIn
         flag?.let {
-            if (!it){
+            if (!it) {
                 doLogin()
-            }else{
+            } else {
                 toastMsg("user is already signed In")
             }
-        }?: run {
+        } ?: run {
             toastMsg("user signed is null")
         }
         binding.goTo.setOnClickListener {
-            startActivity(Intent(this,MyZohoActivity::class.java))
+            startActivity(Intent(this, MyZohoActivity::class.java))
         }
     }
 
     private fun doLogin() {
-        MainApplication.apiProvider?.setUserToken("Anujraiak@outlook.com",object :ZDPortalCallback.SetUserCallback{
-            override fun onException(exp: ZDPortalException?) {
-                toastMsg("Error")
-                setLogCat("SubmitTicket",exp?.errorMsg?:"Unknown Error")
-            }
+        MainApplication.apiProvider?.setUserToken(userToken,
+            object : ZDPortalCallback.SetUserCallback {
+                override fun onException(exp: ZDPortalException?) {
+                    toastMsg("Error")
+                    setLogCat("SubmitTicket", exp?.errorMsg ?: "Unknown Error")
+                }
 
-            override fun onUserSetSuccess() {
-                toastMsg("user is Logged In")
-            }
+                override fun onUserSetSuccess() {
+                    toastMsg("user is Logged In")
+                }
 
-        })
+            })
     }
 }
