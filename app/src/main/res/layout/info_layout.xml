@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingTop="12sp"
+    android:layout_height="wrap_content"
+    android:background="#F7F7F7">
+
+    <TextView
+        android:id="@+id/info_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gilroy_bold"
+        android:textSize="15sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintRight_toLeftOf="@id/arr_logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="More about NRO FD on SBNRI" />
+
+
+    <ImageView
+        android:id="@+id/arr_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:padding="10dp"
+        android:rotationY="180"
+        android:scaleType="fitXY"
+        android:src="@drawable/back_arr"
+        app:layout_constraintBottom_toBottomOf="@id/info_txt"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintLeft_toRightOf="@id/info_txt"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/info_txt"
+        app:tint="@color/txt_color" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="#EBECEF"
+        app:layout_constraintTop_toBottomOf="@id/info_txt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

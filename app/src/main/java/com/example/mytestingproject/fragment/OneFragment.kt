@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.example.mytestingproject.R
 import com.example.mytestingproject.adaptor.ContentRecycleData
+import com.example.mytestingproject.adaptor.InfoAdaptor
 import com.example.mytestingproject.databinding.OneFragmentLayoutBinding
 import com.example.mytestingproject.model.Content
+import com.example.mytestingproject.utils.InfoList
 import com.example.mytestingproject.utils.Ruppess
 import com.example.mytestingproject.utils.msg
 import com.example.mytestingproject.utils.setHtmlTxt
@@ -24,6 +26,7 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
 
     private lateinit var binding: OneFragmentLayoutBinding
     private lateinit var contentAdaptor: ContentRecycleData
+    private lateinit var infoAdaptor: InfoAdaptor
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,8 +54,8 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
         binding.companyTwo.intrestRate.text = "Interest Rate"
         binding.companyTwo.manageAmtTxt.text = "$Ruppess 5,000"
         setAdaptor()
-
-            binding.contentSrc.addOnItemTouchListener(object : OnItemTouchListener {
+        setInfoAdaptor()
+        binding.contentSrc.addOnItemTouchListener(object : OnItemTouchListener {
             override fun onInterceptTouchEvent(view: RecyclerView, event: MotionEvent): Boolean {
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> view.parent
@@ -66,8 +69,17 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
         })
 
 
+    }
 
-
+    private fun setInfoAdaptor() {
+        binding.moreInfoDescRecycle.apply {
+            isNestedScrollingEnabled=false
+            infoAdaptor= InfoAdaptor {
+                activity?.msg(it)
+            }
+            adapter=infoAdaptor
+        }
+        infoAdaptor.submitList(InfoList)
     }
 
     private fun setAdaptor() {
