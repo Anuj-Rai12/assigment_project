@@ -25,29 +25,28 @@
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:src="@drawable/back_arr"
-            app:layout_constraintHorizontal_bias=".2"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/fx_dep_txt"
             app:layout_constraintTop_toTopOf="parent" />
-
 
 
         <TextView
             android:id="@+id/fx_dep_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fixed Deposit"
-            android:padding="10dp"
-            android:textSize="20sp"
-            android:textColor="@color/action_txt_color"
+            android:ellipsize="end"
             android:fontFamily="@font/gilroy_bold"
-            app:layout_constraintTop_toTopOf="parent"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:text="Fixed Deposit"
+            android:textColor="@color/action_txt_color"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            />
-
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageButton
@@ -61,12 +60,11 @@
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:src="@drawable/ic_info"
-            app:layout_constraintHorizontal_bias=".8"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1"
             app:layout_constraintLeft_toRightOf="@id/fx_dep_txt"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

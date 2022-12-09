@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/company_bg"
+    android:padding="20dp">
+
+
+    <ImageView
+        android:id="@+id/company_logo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/circle_shape"
+        android:contentDescription="@string/app_name"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/company"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/title_company"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="@font/gilroy_medium"
+        android:maxLines="1"
+        android:textStyle="bold"
+        tools:text="Shriram Transport Company"
+        android:textColor="@color/action_txt_color"
+        android:textSize="16sp"
+        android:padding="4dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/company_logo"
+        app:layout_constraintLeft_toRightOf="@id/company_logo"
+        app:layout_constraintRight_toLeftOf="@id/arr_logo"
+        app:layout_constraintTop_toTopOf="@id/company_logo" />
+
+
+    <ImageView
+        android:id="@+id/arr_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:padding="10dp"
+        android:rotationY="180"
+        android:scaleType="fitXY"
+        android:src="@drawable/back_arr"
+        app:layout_constraintBottom_toBottomOf="@id/company_logo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/txt_color" />
+
+
+    <TextView
+        android:id="@+id/intrest_rate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:padding="5dp"
+        android:text="Interest up to"
+        android:textStyle="bold"
+        android:textColor="@color/txt_color"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/manage_amt"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/company_logo" />
+
+
+    <TextView
+        android:id="@+id/manage_amt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gilroy_medium"
+        android:padding="5dp"
+        android:text="Minimum Investment"
+        android:textColor="@color/txt_color"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/intrest_rate"
+        app:layout_constraintTop_toTopOf="@id/intrest_rate" />
+
+
+    <TextView
+        android:id="@+id/intrest_amt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:textColor="#00A788"
+        android:textSize="16sp"
+        tools:text="6%pa"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/intrest_rate"
+        app:layout_constraintRight_toRightOf="@id/intrest_rate"
+        app:layout_constraintTop_toBottomOf="@id/intrest_rate" />
+
+
+    <TextView
+        android:id="@+id/manage_amt_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:textColor="@color/action_txt_color"
+        android:textSize="16sp"
+        tools:text="5000"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/manage_amt"
+        app:layout_constraintRight_toRightOf="@id/manage_amt"
+        app:layout_constraintTop_toBottomOf="@id/manage_amt" />
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

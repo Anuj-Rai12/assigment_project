@@ -3,12 +3,13 @@ package com.example.mytestingproject.utils
 import android.app.Activity
 import android.content.Context
 import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import android.widget.Toast
-import com.example.mytestingproject.R
+import androidx.core.text.HtmlCompat
 
-fun Activity.changeStatusBarColor(color: Int = R.color.main_color) {
-    this.window?.statusBarColor = getColorInt(color)
-}
+const val Ruppess="₹"
+
 
 fun Activity.getColorInt(color: Int): Int {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -19,4 +20,14 @@ fun Activity.getColorInt(color: Int): Int {
 }
 fun Context.msg(string: String, time: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, string, time).show()
+}
+
+fun setHtmlTxt(txt: String, color: String): Spanned {
+    return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+        Html.fromHtml(
+            "<font color=$color>$txt</font>", HtmlCompat.FROM_HTML_MODE_COMPACT
+        )
+    } else {
+        Html.fromHtml("<font color='$color'>$txt</font>")
+    }
 }
