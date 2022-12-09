@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     companion object {
-        const val userToken = "ae3c5747e56e5854a007802f2f085e0247bbc1396d23b5fa76e7d7e1c2141930"
+        const val userToken = "d8f1d3182f9f24a870af340fd9bb7685ef276498988364ff008491700dd365c2"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
