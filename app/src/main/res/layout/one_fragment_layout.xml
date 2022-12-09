@@ -8,33 +8,34 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/src_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/first_head_color"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/first_head_color">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <TextView
                 android:id="@+id/first_heading_txt"
                 android:layout_width="wrap_content"
-                android:maxLines="1"
-                android:ellipsize="end"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="22dp"
-                android:textStyle="bold"
+                android:ellipsize="end"
                 android:fontFamily="@font/gilroy_medium"
+                android:maxLines="1"
                 android:text="First time Ever"
                 android:textAllCaps="true"
                 android:textColor="@color/txt_color"
                 android:textSize="13sp"
+                android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="8dp"
-                android:lineSpacingExtra="5dp"
                 android:fontFamily="@font/gilroy_extrabold"
+                android:lineSpacingExtra="5dp"
                 android:text="Earn 2X More Returns on Your NRO/NRE Savings "
                 android:textColor="@color/action_txt_color"
                 android:textSize="24sp"
@@ -62,9 +63,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:drawablePadding="5dp"
-                android:maxLines="1"
                 android:ellipsize="end"
                 android:fontFamily="@font/gilroy_medium"
+                android:maxLines="1"
                 android:textColor="@color/action_txt_color"
                 android:textSize="13sp"
                 app:drawableStartCompat="@drawable/tick_icon"
@@ -79,9 +80,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:drawablePadding="5dp"
-                android:maxLines="1"
                 android:ellipsize="end"
                 android:fontFamily="@font/gilroy_medium"
+                android:maxLines="1"
                 android:textColor="@color/action_txt_color"
                 android:textSize="13sp"
                 app:drawableStartCompat="@drawable/tick_icon"
@@ -112,16 +113,23 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/content_src"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="34dp"
+            tools:listitem="@layout/content_src_layout"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/src_info" />
+
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
-
 
 
 </ScrollView>
