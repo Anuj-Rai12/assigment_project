@@ -58,8 +58,7 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
         binding.contentSrc.addOnItemTouchListener(object : OnItemTouchListener {
             override fun onInterceptTouchEvent(view: RecyclerView, event: MotionEvent): Boolean {
                 when (event.action) {
-                    MotionEvent.ACTION_DOWN -> view.parent
-                        .requestDisallowInterceptTouchEvent(true)
+                    MotionEvent.ACTION_DOWN -> view.parent.requestDisallowInterceptTouchEvent(true)
                 }
                 return false
             }
@@ -67,17 +66,15 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
             override fun onTouchEvent(view: RecyclerView, event: MotionEvent) {}
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
-
-
     }
 
     private fun setInfoAdaptor() {
         binding.moreInfoDescRecycle.apply {
-            isNestedScrollingEnabled=false
-            infoAdaptor= InfoAdaptor {
+            isNestedScrollingEnabled = false
+            infoAdaptor = InfoAdaptor {
                 activity?.msg(it)
             }
-            adapter=infoAdaptor
+            adapter = infoAdaptor
         }
         infoAdaptor.submitList(InfoList)
     }
@@ -90,6 +87,7 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
             adapter = contentAdaptor
         }
         contentAdaptor.submitList(Content.list)
+        binding.contentSrc.smoothScrollToPosition(3)
     }
 
 }

@@ -24,6 +24,10 @@ data class Content(
                 R.drawable.person_img,
                 "I am an NRI FD Advisor, helped 1,000+ NRIs"
             ),
+            Content(
+                R.drawable.person_img,
+                "I am an NRI FD Advisor, helped 1,000+ NRIs"
+            ),
         )
     }
 }
