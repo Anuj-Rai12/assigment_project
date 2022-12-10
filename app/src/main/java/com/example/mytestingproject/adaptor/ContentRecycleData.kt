@@ -15,11 +15,11 @@ class ContentRecycleData(private val itemClicked:clickListener) : ListAdapter<Co
     inner class ContentViewHolder(private val binding: ContentSrcLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setData(data: Content,itemClicked:clickListener) {
-            binding.contactMe.setOnClickListener {
+            binding.chatBtn.setOnClickListener {
                 itemClicked.invoke(data)
             }
-            binding.textTitle.text=data.title
-            binding.itemImg.setImageResource(data.id)
+            binding.titleTxt.text=data.title
+            binding.img.setImageResource(data.id)
         }
     }
 

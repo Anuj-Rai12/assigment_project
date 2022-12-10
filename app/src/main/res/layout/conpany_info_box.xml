@@ -56,7 +56,7 @@
 
 
     <TextView
-        android:id="@+id/intrest_rate"
+        android:id="@+id/interest_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -66,7 +66,7 @@
         android:textStyle="bold"
         android:textColor="@color/txt_color"
         android:textSize="13sp"
-        app:layout_constraintEnd_toStartOf="@+id/manage_amt"
+        app:layout_constraintEnd_toStartOf="@+id/minimum_investment_title"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
 
 
     <TextView
-        android:id="@+id/manage_amt"
+        android:id="@+id/minimum_investment_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gilroy_medium"
@@ -86,12 +86,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/intrest_rate"
-        app:layout_constraintTop_toTopOf="@id/intrest_rate" />
+        app:layout_constraintStart_toEndOf="@+id/interest_title"
+        app:layout_constraintTop_toTopOf="@id/interest_title" />
 
 
     <TextView
-        android:id="@+id/intrest_amt"
+        android:id="@+id/interest_amt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="6dp"
@@ -100,13 +100,13 @@
         android:textSize="16sp"
         tools:text="6%pa"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/intrest_rate"
-        app:layout_constraintRight_toRightOf="@id/intrest_rate"
-        app:layout_constraintTop_toBottomOf="@id/intrest_rate" />
+        app:layout_constraintLeft_toLeftOf="@id/interest_title"
+        app:layout_constraintRight_toRightOf="@id/interest_title"
+        app:layout_constraintTop_toBottomOf="@id/interest_title" />
 
 
     <TextView
-        android:id="@+id/manage_amt_txt"
+        android:id="@+id/minimum_investment_amt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="6dp"
@@ -115,9 +115,9 @@
         android:textSize="16sp"
         tools:text="5000"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/manage_amt"
-        app:layout_constraintRight_toRightOf="@id/manage_amt"
-        app:layout_constraintTop_toBottomOf="@id/manage_amt" />
+        app:layout_constraintLeft_toLeftOf="@id/minimum_investment_title"
+        app:layout_constraintRight_toRightOf="@id/minimum_investment_title"
+        app:layout_constraintTop_toBottomOf="@id/minimum_investment_title" />
 
 
 

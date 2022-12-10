@@ -37,25 +37,25 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
         val ss = SpannableString(text)
         val boldSpan = StyleSpan(Typeface.BOLD)
         ss.setSpan(boldSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.thirdHeadingTxt.text = ss
-        binding.thirdHeadingTxt.append(" ")
-        binding.thirdHeadingTxt.append(setHtmlTxt("& India visit needed", "#90a0bc"))
-        binding.fourthHeadingTxt.text = "Start with as low as Rs. 100"
+        binding.itemOneTxt.text = ss
+        binding.itemOneTxt.append(" ")
+        binding.itemOneTxt.append(setHtmlTxt("& India visit needed", "#90a0bc"))
+        binding.itemSecondTxt.text = "Start with as low as Rs. 100"
 
-        binding.companyOne.companyLogo.setImageResource(R.drawable.company)
-        binding.companyOne.titleCompany.text = "Shriram Transport Finance"
-        binding.companyOne.intrestAmt.text = "8%p.a."
-        binding.companyOne.manageAmtTxt.text = "$Ruppess 5,000"
+        binding.firstCompanyLayout.companyLogo.setImageResource(R.drawable.company)
+        binding.firstCompanyLayout.titleCompany.text = "Shriram Transport Finance"
+        binding.firstCompanyLayout.interestAmt.text = "8%p.a."
+        binding.firstCompanyLayout.minimumInvestmentAmt.text = "$Ruppess 5,000"
 
 
-        binding.companyTwo.companyLogo.setImageResource(R.drawable.mhaindra)
-        binding.companyTwo.titleCompany.text = "Mahindra Finance"
-        binding.companyTwo.intrestAmt.text = "7%p.a."
-        binding.companyTwo.intrestRate.text = "Interest Rate"
-        binding.companyTwo.manageAmtTxt.text = "$Ruppess 5,000"
+        binding.secondCompanyLayout.companyLogo.setImageResource(R.drawable.mhaindra)
+        binding.secondCompanyLayout.titleCompany.text = "Mahindra Finance"
+        binding.secondCompanyLayout.interestAmt.text = "7 %p.a."
+        binding.secondCompanyLayout.interestAmt.text = "Interest Rate"
+        binding.secondCompanyLayout.minimumInvestmentAmt.text = "$Ruppess 5,000"
         setAdaptor()
         setInfoAdaptor()
-        binding.contentSrc.addOnItemTouchListener(object : OnItemTouchListener {
+        binding.contentRecycleView.addOnItemTouchListener(object : OnItemTouchListener {
             override fun onInterceptTouchEvent(view: RecyclerView, event: MotionEvent): Boolean {
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> view.parent.requestDisallowInterceptTouchEvent(true)
@@ -69,7 +69,7 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
     }
 
     private fun setInfoAdaptor() {
-        binding.moreInfoDescRecycle.apply {
+        binding.footerOptionRecycleView.apply {
             isNestedScrollingEnabled = false
             infoAdaptor = InfoAdaptor {
                 activity?.msg(it)
@@ -80,14 +80,14 @@ class OneFragment : Fragment(R.layout.one_fragment_layout) {
     }
 
     private fun setAdaptor() {
-        binding.contentSrc.apply {
+        binding.contentRecycleView.apply {
             contentAdaptor = ContentRecycleData {
                 activity?.msg("Contact me")
             }
             adapter = contentAdaptor
         }
         contentAdaptor.submitList(Content.list)
-        binding.contentSrc.smoothScrollToPosition(3)
+        binding.contentRecycleView.smoothScrollToPosition(3)
     }
 
 }

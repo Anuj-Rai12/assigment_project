@@ -17,7 +17,7 @@ class InfoAdaptor(private val itemClicked: clickItem) :
             binding.root.setOnClickListener {
                 itemClicked.invoke(data)
             }
-            binding.infoTxt.text = data
+            binding.titleTxt.text = data
         }
     }
 

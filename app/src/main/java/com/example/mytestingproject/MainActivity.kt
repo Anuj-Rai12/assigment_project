@@ -48,10 +48,10 @@ class MainActivity : AppCompatActivity() {
         lp.gravity = Gravity.LEFT
         supportActionBar!!.setCustomView(binding.root, lp)
         binding.root.setContentInsetsAbsolute(0, 0)
-        binding.toolbarBackBtn.setOnClickListener {
+        binding.backBtn.setOnClickListener {
             msg("back arrow")
         }
-        binding.toolbarInfoBtn.setOnClickListener {
+        binding.infoBtn.setOnClickListener {
             msg("Information")
         }
 

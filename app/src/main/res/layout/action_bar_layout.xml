@@ -15,11 +15,10 @@
         android:layout_height="wrap_content">
 
         <ImageButton
-            android:id="@+id/toolbar_back_btn"
+            android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_name"
@@ -28,13 +27,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/fx_dep_txt"
+            app:layout_constraintRight_toLeftOf="@id/page_title"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/txt_color" />
 
 
         <TextView
-            android:id="@+id/fx_dep_txt"
+            android:id="@+id/page_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -51,7 +50,7 @@
 
 
         <ImageButton
-            android:id="@+id/toolbar_info_btn"
+            android:id="@+id/info_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
@@ -64,7 +63,7 @@
             android:src="@drawable/ic_info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintLeft_toRightOf="@id/fx_dep_txt"
+            app:layout_constraintLeft_toRightOf="@id/page_title"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
