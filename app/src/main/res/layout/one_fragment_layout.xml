@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
                 android:fontFamily="@font/gilroy_extrabold"
                 android:lineSpacingExtra="5dp"
                 android:text="Earn 2X More Returns on Your NRO/NRE Savings "
@@ -153,11 +154,13 @@
 
             <TextView
                 android:id="@+id/footer_desc_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/gilroy_medium"
                 android:lineSpacingExtra="5dp"
+                app:layout_constraintRight_toRightOf="@id/footer_option_recycle_view"
+                android:justificationMode="inter_word"
                 android:text="Learn everything you need to know about NRI FD and growing your money with NRI FD"
                 android:textColor="@color/txt_color"
                 android:textSize="14sp"
