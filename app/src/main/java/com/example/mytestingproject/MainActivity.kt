@@ -48,7 +48,10 @@ class MainActivity : AppCompatActivity() {
         lp.gravity = Gravity.LEFT
         supportActionBar!!.setCustomView(binding.root, lp)
         binding.root.setContentInsetsAbsolute(0, 0)
-        binding.backBtn.setOnClickListener {
+      /*  binding.backBtn.setOnClickListener {
+            msg("back arrow")
+        }*/
+        binding.root.setNavigationOnClickListener {
             msg("back arrow")
         }
         binding.infoBtn.setOnClickListener {

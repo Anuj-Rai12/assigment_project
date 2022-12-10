@@ -8,33 +8,39 @@
     android:contentInsetLeft="0dp"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp"
+    android:gravity="bottom"
+    app:navigationIcon="@drawable/back_arr"
     app:contentInsetStartWithNavigation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageButton
+        <!--<ImageButton
             android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:scaleType="center"
             android:layout_marginBottom="15dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_name"
-            android:gravity="center"
+            android:gravity="bottom"
+            android:minWidth="32dp"
+            app:layout_constraintVertical_bias="1"
+            android:minHeight="48dp"
             android:src="@drawable/back_arr"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/page_title"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/txt_color" />
+            app:tint="@color/action_txt_color" />-->
 
 
         <TextView
             android:id="@+id/page_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="@font/gilroy_bold"
@@ -43,9 +49,10 @@
             android:text="Fixed Deposits"
             android:textColor="@color/action_txt_color"
             android:textSize="20sp"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/info_btn"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -56,16 +63,17 @@
             android:layout_gravity="start"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            app:tint="@color/txt_color"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_name"
             android:gravity="center"
+            android:minWidth="32dp"
+            android:minHeight="48dp"
             android:src="@drawable/ic_info"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintLeft_toRightOf="@id/page_title"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/action_txt_color" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
