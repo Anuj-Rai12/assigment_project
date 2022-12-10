@@ -54,8 +54,11 @@ class MainActivity : AppCompatActivity() {
         binding.root.setNavigationOnClickListener {
             msg("back arrow")
         }
-        binding.infoBtn.setOnClickListener {
-            msg("Information")
+        binding.root.setOnMenuItemClickListener {
+            if (it.itemId==R.id.menu_item_click){
+                msg("information btn")
+            }
+            return@setOnMenuItemClickListener true
         }
 
     }
