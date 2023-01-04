@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:view="bottomNavigation">
+
+    <item
+        android:id="@+id/mnu_home_fragment"
+        android:icon="@drawable/btn_android"
+        android:title="Android" />
+
+    <item
+        android:id="@+id/sec_home_fragment"
+        android:icon="@drawable/ic_start"
+        android:title="Start" />
+
+    <item
+        android:id="@+id/third_home_fragment"
+        android:icon="@drawable/ic_youtube"
+        android:title="Youtube" />
+
+
+</menu>
