@@ -33,6 +33,9 @@ class ScanScreen : AppCompatActivity() {
         setContentView(binding.root)
         cameraExecutor = Executors.newSingleThreadExecutor()
         startCamera()
+        binding.floatingBtn.setOnClickListener {
+
+        }
     }
 
     private fun startCamera() {
@@ -59,15 +62,15 @@ class ScanScreen : AppCompatActivity() {
                             createLog("LUMINOS_id", "$luma")
                             Log.d("TAG", "Average luminosity: $luma")
                         }, { imageInput, imgProxy ,img->
-                           recognizer.process(imageInput).addOnSuccessListener {txt->
-                               createLog("TEXT_RES","RES -> $txt")
-                               msg("$txt")
-                           }.addOnFailureListener {e->
-                               createLog("TEXT_RES","error -> $e")
-                           }.addOnCompleteListener {
-                               img.close()
-                               imgProxy.close()
-                           }
+                            recognizer.process(imageInput).addOnSuccessListener {txt->
+                                createLog("TEXT_RES","RES -> $txt")
+                                msg("$txt")
+                            }.addOnFailureListener {e->
+                                createLog("TEXT_RES","error -> $e")
+                            }.addOnCompleteListener {
+                                img.close()
+                                imgProxy.close()
+                            }
                         })
                     )
                 }
