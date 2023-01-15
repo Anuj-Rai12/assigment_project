@@ -100,7 +100,7 @@ class ScanScreen : AppCompatActivity() {
             val imageAnalyzer = ImageAnalysis.Builder()
                 .build()
                 .also {
-                    it.setAnalyzer(
+                  /*  it.setAnalyzer(
                         cameraExecutor, LuminosityAnalyzer({ luma ->
                             createLog("LUMINOS_id", "$luma")
                             Log.d("TAG", "Average luminosity: $luma")
@@ -115,7 +115,7 @@ class ScanScreen : AppCompatActivity() {
                                 imgProxy.close()
                             }
                         })
-                    )
+                    )*/
                 }
 
             // Select back camera as a default
