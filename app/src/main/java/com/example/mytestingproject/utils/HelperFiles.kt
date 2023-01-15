@@ -11,3 +11,5 @@ fun Activity.msg(msg: String) {
 fun createLog(tag: String, msg: String) {
     Log.i(tag, "createLog: $msg")
 }
+
+const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"

@@ -7,11 +7,22 @@
     tools:context=".MainActivity">
 
 
+    <ImageView
+        android:id="@+id/img_view"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        tools:src="@drawable/test_file"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <Button
         android:id="@+id/btn_id_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Click GO it?"
+        android:text="Get Text from Image"
+        app:layout_constraintVertical_bias=".8"
         app:layout_constraintBottom_toTopOf="@id/btn_id"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,7 +33,8 @@
         android:id="@+id/btn_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click"
+        android:text="Go to Camera"
+        app:layout_constraintVertical_bias=".8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

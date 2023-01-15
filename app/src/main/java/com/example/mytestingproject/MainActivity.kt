@@ -1,10 +1,14 @@
 package com.example.mytestingproject
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import com.example.mytestingproject.databinding.ActivityMainBinding
 import com.example.mytestingproject.utils.createLog
 import com.example.mytestingproject.utils.msg
@@ -27,59 +31,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        intent.getStringExtra("url")?.let {
+           // binding.imgView.setImageURI(it.toUri())
+            val bitmap=MediaStore.Images.Media.getBitmap(contentResolver, it.toUri())
+            binding.imgView.setImageBitmap(bitmap)
+        } ?: binding.imgView.setImageResource(R.drawable.test_file)
 
 
 
         binding.btnId2.setOnClickListener {
-            val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.test_file)
+            val bitmap=intent.getStringExtra("url")?.let {
+                return@let MediaStore.Images.Media.getBitmap(contentResolver, it.toUri())
+            } ?: BitmapFactory.decodeResource(context.resources, R.drawable.test_file)
 
             val input = InputImage.fromBitmap(bitmap, 0)
-            recognizer.process(input).addOnSuccessListener {result->
-                //createLog("IMG_RES", "TEXT => ${GsonUtils.fromJsonToString(it)}")
+            recognizer.process(input).addOnSuccessListener { result ->
                 val resultText = result.text
+                dialog("Success", resultText)
                 createLog("IMG_RES", "TEXT => $resultText")
-                for (block in result.textBlocks) {
-                    val blockText = block.text
-                    val blockCornerPoints = block.cornerPoints
-                    val blockFrame = block.boundingBox
-                    createLog("IMG_RES", "blockText => $blockText")
-                    createLog("IMG_RES", "blockCorner => $blockCornerPoints")
-                    createLog("IMG_RES", "blockFrame => $blockFrame")
-                    for (line in block.lines) {
-                        val lineText = line.text
-                        val lineCornerPoints = line.cornerPoints
-                        val lineFrame = line.boundingBox
-                        createLog("IMG_RES", "LineText => $lineText")
-                        createLog("IMG_RES", "LineCornerPoints => $lineCornerPoints")
-                        createLog("IMG_RES", "LineFrame => $lineFrame")
-                        for (element in line.elements) {
-                            val elementText = element.text
-                            val elementCornerPoints = element.cornerPoints
-                            val elementFrame = element.boundingBox
-                            createLog("IMG_RES", "elementText => $elementText")
-                            createLog("IMG_RES", "elementCornerPoints => $elementCornerPoints")
-                            createLog("IMG_RES", "elementsFrame => $elementFrame")
-                        }
-                    }
-                }
-                /*it.textBlocks.forEach {res->
-                    createLog("IMG_RES","TEXT RES -=> ${res.text}")
-                    res.lines.forEach {line->
-                        createLog("IMG_RES","TEXT RES -=> ${line.text}")
-                        createLog("IMG_RES","CONFIDENCE RES -=> ${line.confidence}")
-                        createLog("IMG_RES","ANGLE RES -=> ${line.angle}")
-                        createLog("IMG_RES","ANGLE RES -=> ${line.elements}")
-                        line.elements.forEach {txtElement->
-                            createLog("IMG_RES","TEXT RES -=> ${txtElement.text}")
-                            createLog("IMG_RES","ANGLE RES -=> ${txtElement.angle}")
-                            createLog("IMG_RES","Symbols RES -=> ${txtElement.symbols}")
-                            createLog("IMG_RES","Confidence RES -=> ${txtElement.confidence}")
-                            txtElement.symbols.forEach { txtSy->
-                            }
-                        }
-                    }
-                }*/
             }.addOnFailureListener {
+                dialog("Failed", it.localizedMessage ?: "unknown error")
                 createLog("IMG_RES", "Error --> $it")
             }
         }
@@ -106,6 +77,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
+
+    private fun dialog(title: String, msg: String) {
+        val dialog = AlertDialog.Builder(this)
+        dialog.setTitle(title)
+        dialog.setMessage(msg)
+        dialog.setPositiveButton("ok") { _, _ ->
+
+        }
+        dialog.show()
+    }
+
 }
