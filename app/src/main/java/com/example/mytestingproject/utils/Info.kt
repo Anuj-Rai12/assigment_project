@@ -5,16 +5,15 @@ object Info {
     val paytmPackage = "com.paytm.pos.debug"
     val packName = "com.example.mytestingproject"
     val callbackAction = "com.paytm.pos.payment.CALL_BACK_RESULT"
-    val orderId = "123243443"
     val paymentMode = "All"
     val paymentDI = "sampledeeplink://payment"
-    val amount = "1200"
+    val amount = "1200000"
 
     val response = "paytmedc://paymentV2?" +
             "callbackAction=" + callbackAction +
             "&callbackPkg=" + packName +
             "&amount=" + amount +
-            "&orderId=" + orderId +
+            "&orderId=" + "123243"+(100..1000).random() +
             "&requestPayMode=" + paymentMode +
             "&callbackDl=" + paymentDI
 
