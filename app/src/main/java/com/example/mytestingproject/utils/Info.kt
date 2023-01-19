@@ -7,7 +7,7 @@ object Info {
     val callbackAction = "com.paytm.pos.payment.CALL_BACK_RESULT"
     val paymentMode = "All"
     val paymentDI = "sampledeeplink://payment"
-    val amount = "1200000"
+    val amount = "100"
 
     val response = "paytmedc://paymentV2?" +
             "callbackAction=" + callbackAction +
