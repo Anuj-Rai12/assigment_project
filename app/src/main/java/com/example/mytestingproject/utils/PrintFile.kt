@@ -113,7 +113,7 @@ class PrintFile(context: Context) {
                 .addElement(
                     ImageElement(
                         image = icon,
-                        height = 50,
+                        height = 25,
                         widthWeight = 1,
                         shrinkToFit = true
                     )
