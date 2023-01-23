@@ -15,6 +15,7 @@ object Info {
             "&amount=" + amount +
             "&orderId=" + "123243"+(100..1000).random() +
             "&requestPayMode=" + paymentMode +
-            "&callbackDl=" + paymentDI
+            "&callbackDl=" + paymentDI+
+            "&param1=OldThing Completed&param2=fdjlgdkljsdgl"
 
 }
