@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,18 +29,30 @@ class MainActivity : AppCompatActivity() {
         binding.sendStatus.movementMethod = ScrollingMovementMethod()
 
         checkPermission()
-        sendMapFile().forEach { (phone, name) ->
+        //val ls = listOf("9560111765", "9289823905", "7701944261")
+        sendMapFile().forEach { (phone,name) ->
             binding.sendStatus.append("$name and $phone\n\n")
         }
         binding.btnInfo.setOnClickListener {
-            binding.sendStatus.text=""
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            val pi: PendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
+            binding.sendStatus.text = ""
+
+          //  val intent = Intent(applicationContext, MainActivity::class.java)
+          //  val pi: PendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
             val sms: SmsManager = SmsManager.getDefault()
-            sendMapFile().forEach {(phone,name)->
-                sms.sendTextMessage(phone, null, engMsg(), pi, null)
-                sms.sendTextMessage(phone, null, hindiMsg(), pi, null)
-                binding.sendStatus.append("$name and $phone status Send ${getEmojiByUnicode()}\n\n")
+            val hi ="नमस्ते महोदय,MyParkings/BECIL की ओर से हम आपको सूचित करना चाहते है की 1 फ़रवरी 2023 से POS devices का किराया, कर सहित 530 रुपए प्रति माह हो जाएगा | अन्य किसी सहायता के लिए समपर्क करे  @9090808809 धन्यवाद,@TeamMyParkings/BECIL"
+            val en = "Hello Sir,MyParkings/BECIL, Would like to Inform that, from the 1st of February 2023. The rental of POS/EDC devices will charged at Rs.530 incl. Taxes If you have any questions or queries, please contact us @+919090808809. Thanks & Regards,@TeamMyParkings/BECIL"
+            Log.i("EXP_LEN", "onCreate: En ${en.length} HI -> ${hi.length}")
+            sendMapFile().forEach { (phone,name) ->
+                try {
+                    val arr=sms.divideMessage(hi)
+                    val arrEng=sms.divideMessage(en)
+                    sms.sendMultipartTextMessage(phone, null, arr, null, null)
+                    sms.sendMultipartTextMessage(phone, null, arrEng, null, null)
+                    //sms.sendTextMessage(phone, null, hi, pi, null)
+                    binding.sendStatus.append("$name and  $phone status Send ${getEmojiByUnicode()}\n\n")
+                } catch (e: Exception) {
+                    Log.i("EXP", "onCreate: ${e.localizedMessage}")
+                }
             }
         }
     }

@@ -43,6 +43,7 @@ fun sendMapFile(): Map<String, String> {
         "8851235856" to "Uday Thakur",
         "8178922929" to "Manoj Kumar",
         "9871838588" to "Lakhvinder Singh",
-        "9910841821" to "Tuntun Kumar Singh"
+        "9910841821" to "Tuntun Kumar Singh",
+        "9219141756" to "ANUJ rai"
     )
 }
