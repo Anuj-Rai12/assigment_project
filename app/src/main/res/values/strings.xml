@@ -2,5 +2,6 @@
     <string name="app_name">MyTestingProject</string>
     <string name="long_press_marker">Current Location</string>
     <string name="google_map_api_key">AIzaSyAnUpTIu9ffdnE07nQYiElpRADI-OVlt3k</string>
+    <string name="title_activity_maps">MapsActivity</string>
     <!--AIzaSyAxrSZEJFktiF-pLIaivMPXBZM74IDXG-I-->
 </resources>

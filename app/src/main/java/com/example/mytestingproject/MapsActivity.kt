@@ -1,40 +1,38 @@
 package com.example.mytestingproject
 
-
-
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
-import com.example.mytestingproject.databinding.ActivityMainBinding
+import android.os.Bundle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.example.mytestingproject.databinding.ActivityMapsBinding
 
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
-    private lateinit var binding: ActivityMainBinding
-    private var mMap: GoogleMap? = null
-
+    private lateinit var mMap: GoogleMap
+    private lateinit var binding: ActivityMapsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMapsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
         // Add a marker in Sydney and move the camera
-        // Add a marker in Sydney and move the camera
-        val TutorialsPoint = LatLng(21.0, 57.0)
-        mMap!!.addMarker(MarkerOptions().position(TutorialsPoint).title("Tutorialspoint.com"))
-        mMap!!.moveCamera(CameraUpdateFactory.newLatLng(TutorialsPoint))
+        val sydney = LatLng(-34.0, 151.0)
+        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
-
-
 }
