@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.mytestingproject.fragment.MainFragment"
+        android:label="main_fragment_layout"
+        tools:layout="@layout/main_fragment_layout" >
+        <action
+            android:id="@+id/action_mainFragment_to_questionOneFragment"
+            app:destination="@id/questionOneFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_questionThreeFragment"
+            app:destination="@id/questionThreeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_questionTwoFragment"
+            app:destination="@id/questionTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionOneFragment"
+        android:name="com.example.mytestingproject.fragment.QuestionOneFragment"
+        android:label="question_one_layout"
+        tools:layout="@layout/question_one_layout" />
+    <fragment
+        android:id="@+id/questionTwoFragment"
+        android:name="com.example.mytestingproject.fragment.QuestionTwoFragment"
+        android:label="question_two_screen_layout"
+        tools:layout="@layout/question_two_screen_layout" />
+    <fragment
+        android:id="@+id/questionThreeFragment"
+        android:name="com.example.mytestingproject.fragment.QuestionThreeFragment"
+        android:label="question_three_layout"
+        tools:layout="@layout/question_three_layout" />
+</navigation>
