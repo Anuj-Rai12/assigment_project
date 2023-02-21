@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
+import com.example.mytestingproject.R
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Retrofit
 
@@ -70,5 +71,17 @@ fun setHtmlTxt(txt: String, color: String): Spanned {
         )
     } else {
         Html.fromHtml("<font color='$color'>$txt</font>")
+    }
+}
+
+fun Activity.changeStatusBarColor(color: Int = R.color.bg_top) {
+    this.window?.statusBarColor = getColorInt(color)
+}
+
+fun Activity.getColorInt(color: Int): Int {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        resources.getColor(color, null)
+    } else {
+        resources.getColor(color)
     }
 }
