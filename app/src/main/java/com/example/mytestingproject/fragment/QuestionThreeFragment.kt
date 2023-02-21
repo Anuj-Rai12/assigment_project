@@ -24,8 +24,4 @@ class QuestionThreeFragment : Fragment(R.layout.question_three_layout) {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
     }
 
-    override fun onPause() {
-        super.onPause()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
-    }
 }
