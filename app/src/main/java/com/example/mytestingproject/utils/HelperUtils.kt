@@ -11,7 +11,6 @@ import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import com.example.mytestingproject.R
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Retrofit
 
 fun NavController.safeNavigate(actionId: Int) {
@@ -29,6 +28,7 @@ fun getEmojiByUnicode(unicode: Int) = String(Character.toChars(unicode))
 object HelperUtils {
     const val apiBaseUrl = "https://simplifiedcoding.net/demos/"
     const val EndPointUrl = "marvel"
+    const val VideoUrl="http://pandora.yilstaging.com/writable/uploads/20210127/1611811599_2ac19cd41e8387119d7e.mp3"
 }
 
 fun View.hide() {
