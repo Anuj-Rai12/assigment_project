@@ -5,16 +5,23 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mytestingproject.R
+import com.example.mytestingproject.adaptor.HeroAdaptor
 import com.example.mytestingproject.databinding.QuestionOneLayoutBinding
+import com.example.mytestingproject.model.MarvelHeroes
+import com.example.mytestingproject.model.MarvelHeroesItem
 import com.example.mytestingproject.utils.*
 import com.example.mytestingproject.viewmodel.QuestionOneViewModel
+import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class QuestionOneFragment : Fragment(R.layout.question_one_layout) {
 
     private lateinit var binding: QuestionOneLayoutBinding
 
     private val viewModel: QuestionOneViewModel by viewModels()
+
+    private lateinit var heroAdaptor: HeroAdaptor
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,7 +31,27 @@ class QuestionOneFragment : Fragment(R.layout.question_one_layout) {
                 activity?.showDialog("Failed", msg, true) {}
             }
         }
+        setRecycle()
         getMarvelHero()
+    }
+
+    private fun setRecycle() {
+        binding.recycleView.apply {
+            heroAdaptor= HeroAdaptor {
+                goToDialog(it)
+            }
+            val divider =
+                MaterialDividerItemDecoration(requireActivity(), LinearLayoutManager.VERTICAL)
+            divider.dividerInsetEnd = 20
+            divider.dividerInsetStart = 20
+            divider.dividerThickness=2
+            addItemDecoration(divider)
+            adapter=heroAdaptor
+        }
+    }
+
+    private fun goToDialog(it: MarvelHeroesItem) {
+        activity?.msg("$it")
     }
 
     private fun getMarvelHero() {
@@ -41,7 +68,8 @@ class QuestionOneFragment : Fragment(R.layout.question_one_layout) {
                 }
                 is ApiResponse.Success -> {
                     hide()
-                    activity?.msg("${it.data}")
+                    val data=it.data as MarvelHeroes
+                    heroAdaptor.submitList(data)
                 }
             }
         }

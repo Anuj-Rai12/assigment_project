@@ -15,7 +15,7 @@ class QuestionOneRepo(retrofit: Retrofit) {
 
 
     fun getMarvelHeroes() = flow {
-        emit(ApiResponse.Loading("Please Wait Find ${getEmojiByUnicode(0x1F575)}"))
+        emit(ApiResponse.Loading("Please Wait Finding Heroes ${getEmojiByUnicode(0x1F575)}"))
         val data = try {
             val res = api.getMarvelHeroes()
             if (res.isSuccessful) {
