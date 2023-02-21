@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mytestingproject.R
 import com.example.mytestingproject.adaptor.HeroAdaptor
 import com.example.mytestingproject.databinding.QuestionOneLayoutBinding
+import com.example.mytestingproject.fragment.dialog.HeroDetailDialog
 import com.example.mytestingproject.model.MarvelHeroes
 import com.example.mytestingproject.model.MarvelHeroesItem
 import com.example.mytestingproject.utils.*
@@ -22,6 +23,11 @@ class QuestionOneFragment : Fragment(R.layout.question_one_layout) {
     private val viewModel: QuestionOneViewModel by viewModels()
 
     private lateinit var heroAdaptor: HeroAdaptor
+
+
+    private val dialog by lazy {
+        HeroDetailDialog(requireActivity())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,21 +43,21 @@ class QuestionOneFragment : Fragment(R.layout.question_one_layout) {
 
     private fun setRecycle() {
         binding.recycleView.apply {
-            heroAdaptor= HeroAdaptor {
+            heroAdaptor = HeroAdaptor {
                 goToDialog(it)
             }
             val divider =
                 MaterialDividerItemDecoration(requireActivity(), LinearLayoutManager.VERTICAL)
             divider.dividerInsetEnd = 20
             divider.dividerInsetStart = 20
-            divider.dividerThickness=2
+            divider.dividerThickness = 2
             addItemDecoration(divider)
-            adapter=heroAdaptor
+            adapter = heroAdaptor
         }
     }
 
-    private fun goToDialog(it: MarvelHeroesItem) {
-        activity?.msg("$it")
+    private fun goToDialog(data: MarvelHeroesItem) {
+        dialog.showDialogDetail(data, requireActivity())
     }
 
     private fun getMarvelHero() {
@@ -68,7 +74,7 @@ class QuestionOneFragment : Fragment(R.layout.question_one_layout) {
                 }
                 is ApiResponse.Success -> {
                     hide()
-                    val data=it.data as MarvelHeroes
+                    val data = it.data as MarvelHeroes
                     heroAdaptor.submitList(data)
                 }
             }
